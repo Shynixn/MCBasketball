@@ -14,7 +14,6 @@ MCBasketball is a spigot plugin to play basketball games in Minecraft.
 * Uses blocks as balls in Minecraft
 * Games are completely customizable
 * Bukkit and Folia compatible
-* Check out the TODO to get more information.
 
 ## Installation
 
