@@ -528,6 +528,267 @@ deleted file mode 100644
 -    postYawSpinScale: 1.0
 -    # The particle/sound effect name to play when this interaction is successfully triggered.
 -    effectName: ball_kick
+Index: docs/wiki/docs/cloud.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/docs/wiki/docs/cloud.md b/docs/wiki/docs/cloud.md
+--- a/docs/wiki/docs/cloud.md	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
++++ b/docs/wiki/docs/cloud.md	(date 1787482764769)
+@@ -1,191 +1,0 @@
+-# BlockBall Hub - Cloud Integration (BETA)
+-
+-Share your BlockBall games with the world! The BlockBall Hub is a cloud service that automatically publishes game results and player statistics to a dedicated website.
+-
+-Check out the demo on [https://blockball.shynixn.com](https://blockball.shynixn.com)
+-
+-!!! warning "Patreon Exclusive"
+-    This feature is available exclusively to active Patreon supporters. [Become a patron](https://www.patreon.com/shynixn) to unlock cloud features. This feature is only available as long as you are subscribed.
+-
+-## 🎯 Overview
+-
+-BlockBall Hub allows you to:
+-
+-- **Automatically publish game results** from your Minecraft server to the web
+-- **Track player statistics** with player statistic pages
+-- **Share games publicly** with a personal server page
+-- **Custom domain integration** (Elite & Legendary tiers only)
+-
+-Your BlockBall Hub server is accessible at:
+-```
+-https://blockball.shynixn.com/games?s=<yourserverid>
+-```
+-
+----
+-
+-## 🚀 Setup Guide
+-
+-### Step 1: Register Your Server
+-
+-1. Navigate to [Registration](https://blockball.shynixn.com/info)
+-2. Login with your **Patreon account**
+-3. Complete registration to create your personal server page
+-
+-✅ **Success!** Your unique server URL will be generated automatically.
+-
+-### Step 2: Connect Your Minecraft Server
+-
+-Make sure you have got the following permission
+-
+-```bash
+-blockball.cloud
+-```
+-
+-Link your Minecraft server to your BlockBall Hub account:
+-
+-```bash
+-/blockball cloud login
+-```
+-
+-**What happens next:**
+-
+-- You'll be prompted to authenticate with the **same Patreon account** used during registration
+-- Follow the authentication instructions in chat
+-- Your server will be securely connected to BlockBall Hub
+-
+-!!! tip "Authentication"
+-    Make sure you're using the same Patreon account on both the website and in-game to ensure proper connection.
+-
+-### Step 3: Enable Cloud Publishing for Arenas
+-
+-Enable cloud publishing for individual arenas by editing their configuration files.
+-
+-**File Location:**
+-```
+-/plugins/BlockBall/arena/<arena_name>.yml
+-```
+-
+-**Configuration:**
+-
+-1. Open your arena YAML file in a text editor
+-2. Find the `cloudMeta:` section
+-3. Set `enabled: true`
+-4. Save the file
+-5. Reload the arena: `/blockball reload`
+-
+-**Example Configuration:**
+-```yaml
+-cloudMeta:
+-  enabled: true
+-  # Optional: additional cloud properties
+-```
+-
+-!!! tip "Optional Properties"
+-    The cloud section supports additional configuration options. Check the YAML file for available settings.
+-
+-### Step 4: Play and Publish
+-
+-That's it! Now just play normally:
+-
+-1. **Start a game** on your arena
+-2. **Play through to completion**
+-3. **Results are automatically published** to your BlockBall Hub server
+-4. **A publish link** is sent to you in ingame chat
+-
+----
+-
+-## 📊 Features
+-
+-### Game Publishing
+-
+-Every completed game is automatically uploaded with:
+-
+-- Final scores and match results
+-- Team compositions
+-- Game duration and timing
+-- Arena information
+-
+-### Player Statistics
+-
+-Player performance data is tracked and published:
+-
+-- Player statistics across all games
+-
+-### Public Access
+-
+-Share your BlockBall Hub server URL with:
+-
+-- Players on your server
+-- Your community website
+-- Social media followers
+-- Anyone interested in your server's games
+-
+----
+-
+-## 👑 Premium Features
+-
+-### Custom Domain Integration
+-
+-**Available for:** Elite & Legendary Patreon Tiers
+-
+-Instead of using the default BlockBall Hub URL, integrate the service into your own domain:
+-
+-**Default URL:**
+-```
+-https://blockball.shynixn.com/games?s=<yourserverid>
+-```
+-
+-**Custom Domain:**
+-```
+-https://soccer.yourcustomdomain.com/games
+-```
+-
+-**Benefits:**
+-
+-- Private server configuration
+-- Branded experience matching your server
+-- Professional appearance for your community
+-- Seamless integration with existing website
+-
+-!!! info "Custom Domain Setup"
+-    Contact support through Patreon for assistance with custom domain configuration.
+-
+----
+-
+-## 🔧 Troubleshooting
+-
+-### Game Not Publishing
+-
+-**Check these common issues:**
+-
+-1. **Cloud login status:**  
+-   Run `/blockball cloud login` and verify authentication
+-
+-2. **Arena cloud setting:**  
+-   Ensure `enabled: true` in arena YAML file
+-
+-3. **Game completion:**  
+-   Only completed games are published (not manually stopped)
+-
+-4. **Server connectivity:**  
+-   Check internet connection and firewall settings
+-
+-### Authentication Issues
+-
+-- Verify you're using the **same Patreon account** on both website and server
+-- Check that your Patreon subscription is active. The Basic tier is required
+-- Try logging out and logging in again: `/blockball cloud logout` then `/blockball cloud login`
+-
+-### Statistics Not Updating
+-
+-- Allow a few minutes for statistics to process
+-- Refresh your browser page
+-- Verify the game published successfully on your server page
+-
+----
+-
+-## 📚 Additional Resources
+-
+-- **Patreon:** [Support BlockBall development](https://www.patreon.com/shynixn)
+-- **BlockBall Hub:** [Visit your server page](https://blockball.shynixn.com)
+-- **Terms of Service:** [Terms of Service](https://blockball.shynixn.com/info)
+Index: docs/wiki/docs/ball.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/docs/wiki/docs/ball.md b/docs/wiki/docs/ball.md
+--- a/docs/wiki/docs/ball.md	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
++++ b/docs/wiki/docs/ball.md	(date 1787482764746)
+@@ -154,7 +154,7 @@
+ 
+ ---
+ 
+-### `soccer_ball.yml` — Default Soccer Ball
++### `basketball.yml` — Default Soccer Ball
+ 
+ The default ball used by all arenas unless specified otherwise. Walk into the ball to dribble, left-click to kick with camera-based steering.
+ 
+Index: src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt b/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt
+--- a/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
++++ b/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt	(date 1787482764830)
+@@ -21,7 +21,6 @@
+ import com.github.shynixn.mcutils.common.ConfigurationService
+ import com.github.shynixn.mcutils.common.ConfigurationServiceImpl
+ import com.github.shynixn.mcutils.common.CoroutineHandler
+-import com.github.shynixn.mcutils.common.Version
+ import com.github.shynixn.mcutils.common.chat.ChatMessageService
+ import com.github.shynixn.mcutils.common.command.CommandService
+ import com.github.shynixn.mcutils.common.command.CommandServiceImpl
+@@ -92,9 +91,7 @@
+                     "ball",
+                     plugin.dataFolder.toPath().resolve("ball"),
+                     listOf(
+-                        "ball/soccer_ball.yml" to "soccer_ball.yml",
+-                        "ball/curve_soccer_ball.yml" to "curve_soccer_ball.yml",
+-                        "ball/hand_ball.yml" to "hand_ball.yml"
++                        "ball/basketball.yml" to "basketball.yml"
+                     ),
+                     listOf(),
+                     object : TypeReference<SoccerBallMeta>() {}
+Index: src/main/java/com/github/shynixn/blockball/entity/SoccerArena.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/github/shynixn/blockball/entity/SoccerArena.kt b/src/main/java/com/github/shynixn/blockball/entity/SoccerArena.kt
+--- a/src/main/java/com/github/shynixn/blockball/entity/SoccerArena.kt	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
++++ b/src/main/java/com/github/shynixn/blockball/entity/SoccerArena.kt	(date 1787482831218)
+@@ -38,7 +38,7 @@
+     var ballSpawnPoint: Vector3d? = null
+ 
+     @Comment("Unique identifier of the ball to use.")
+-    var ballName : String = "soccer_ball"
++    var ballName : String = "basketball"
+ 
+     @Comment("All settings when the ball goes out of bounds.")
+     var ballOutOfBounds : BallOutOfBoundsMeta = BallOutOfBoundsMeta()
 Index: src/main/resources/ball/hand_ball.yml
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
@@ -537,7 +798,7 @@ diff --git a/src/main/resources/ball/hand_ball.yml b/src/main/resources/ball/bas
 rename from src/main/resources/ball/hand_ball.yml
 rename to src/main/resources/ball/basketball.yml
 --- a/src/main/resources/ball/hand_ball.yml	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
-+++ b/src/main/resources/ball/basketball.yml	(date 1787479861472)
++++ b/src/main/resources/ball/basketball.yml	(date 1787482764864)
 @@ -4,7 +4,7 @@
  #
  # ###############
@@ -778,247 +1039,3 @@ rename to src/main/resources/ball/basketball.yml
 -    effectName: ball_kick
 +    effectName: ball_kick
 \ No newline at end of file
-Index: docs/wiki/docs/cloud.md
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/docs/wiki/docs/cloud.md b/docs/wiki/docs/cloud.md
---- a/docs/wiki/docs/cloud.md	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
-+++ b/docs/wiki/docs/cloud.md	(date 1787479861446)
-@@ -1,191 +1,0 @@
--# BlockBall Hub - Cloud Integration (BETA)
--
--Share your BlockBall games with the world! The BlockBall Hub is a cloud service that automatically publishes game results and player statistics to a dedicated website.
--
--Check out the demo on [https://blockball.shynixn.com](https://blockball.shynixn.com)
--
--!!! warning "Patreon Exclusive"
--    This feature is available exclusively to active Patreon supporters. [Become a patron](https://www.patreon.com/shynixn) to unlock cloud features. This feature is only available as long as you are subscribed.
--
--## 🎯 Overview
--
--BlockBall Hub allows you to:
--
--- **Automatically publish game results** from your Minecraft server to the web
--- **Track player statistics** with player statistic pages
--- **Share games publicly** with a personal server page
--- **Custom domain integration** (Elite & Legendary tiers only)
--
--Your BlockBall Hub server is accessible at:
--```
--https://blockball.shynixn.com/games?s=<yourserverid>
--```
--
-----
--
--## 🚀 Setup Guide
--
--### Step 1: Register Your Server
--
--1. Navigate to [Registration](https://blockball.shynixn.com/info)
--2. Login with your **Patreon account**
--3. Complete registration to create your personal server page
--
--✅ **Success!** Your unique server URL will be generated automatically.
--
--### Step 2: Connect Your Minecraft Server
--
--Make sure you have got the following permission
--
--```bash
--blockball.cloud
--```
--
--Link your Minecraft server to your BlockBall Hub account:
--
--```bash
--/blockball cloud login
--```
--
--**What happens next:**
--
--- You'll be prompted to authenticate with the **same Patreon account** used during registration
--- Follow the authentication instructions in chat
--- Your server will be securely connected to BlockBall Hub
--
--!!! tip "Authentication"
--    Make sure you're using the same Patreon account on both the website and in-game to ensure proper connection.
--
--### Step 3: Enable Cloud Publishing for Arenas
--
--Enable cloud publishing for individual arenas by editing their configuration files.
--
--**File Location:**
--```
--/plugins/BlockBall/arena/<arena_name>.yml
--```
--
--**Configuration:**
--
--1. Open your arena YAML file in a text editor
--2. Find the `cloudMeta:` section
--3. Set `enabled: true`
--4. Save the file
--5. Reload the arena: `/blockball reload`
--
--**Example Configuration:**
--```yaml
--cloudMeta:
--  enabled: true
--  # Optional: additional cloud properties
--```
--
--!!! tip "Optional Properties"
--    The cloud section supports additional configuration options. Check the YAML file for available settings.
--
--### Step 4: Play and Publish
--
--That's it! Now just play normally:
--
--1. **Start a game** on your arena
--2. **Play through to completion**
--3. **Results are automatically published** to your BlockBall Hub server
--4. **A publish link** is sent to you in ingame chat
--
-----
--
--## 📊 Features
--
--### Game Publishing
--
--Every completed game is automatically uploaded with:
--
--- Final scores and match results
--- Team compositions
--- Game duration and timing
--- Arena information
--
--### Player Statistics
--
--Player performance data is tracked and published:
--
--- Player statistics across all games
--
--### Public Access
--
--Share your BlockBall Hub server URL with:
--
--- Players on your server
--- Your community website
--- Social media followers
--- Anyone interested in your server's games
--
-----
--
--## 👑 Premium Features
--
--### Custom Domain Integration
--
--**Available for:** Elite & Legendary Patreon Tiers
--
--Instead of using the default BlockBall Hub URL, integrate the service into your own domain:
--
--**Default URL:**
--```
--https://blockball.shynixn.com/games?s=<yourserverid>
--```
--
--**Custom Domain:**
--```
--https://soccer.yourcustomdomain.com/games
--```
--
--**Benefits:**
--
--- Private server configuration
--- Branded experience matching your server
--- Professional appearance for your community
--- Seamless integration with existing website
--
--!!! info "Custom Domain Setup"
--    Contact support through Patreon for assistance with custom domain configuration.
--
-----
--
--## 🔧 Troubleshooting
--
--### Game Not Publishing
--
--**Check these common issues:**
--
--1. **Cloud login status:**  
--   Run `/blockball cloud login` and verify authentication
--
--2. **Arena cloud setting:**  
--   Ensure `enabled: true` in arena YAML file
--
--3. **Game completion:**  
--   Only completed games are published (not manually stopped)
--
--4. **Server connectivity:**  
--   Check internet connection and firewall settings
--
--### Authentication Issues
--
--- Verify you're using the **same Patreon account** on both website and server
--- Check that your Patreon subscription is active. The Basic tier is required
--- Try logging out and logging in again: `/blockball cloud logout` then `/blockball cloud login`
--
--### Statistics Not Updating
--
--- Allow a few minutes for statistics to process
--- Refresh your browser page
--- Verify the game published successfully on your server page
--
-----
--
--## 📚 Additional Resources
--
--- **Patreon:** [Support BlockBall development](https://www.patreon.com/shynixn)
--- **BlockBall Hub:** [Visit your server page](https://blockball.shynixn.com)
--- **Terms of Service:** [Terms of Service](https://blockball.shynixn.com/info)
-Index: docs/wiki/docs/ball.md
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/docs/wiki/docs/ball.md b/docs/wiki/docs/ball.md
---- a/docs/wiki/docs/ball.md	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
-+++ b/docs/wiki/docs/ball.md	(date 1787479861434)
-@@ -154,7 +154,7 @@
- 
- ---
- 
--### `soccer_ball.yml` — Default Soccer Ball
-+### `basketball.yml` — Default Soccer Ball
- 
- The default ball used by all arenas unless specified otherwise. Walk into the ball to dribble, left-click to kick with camera-based steering.
- 
-Index: src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt b/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt
---- a/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt	(revision c398b22d264a7a39d984c8c27728142b8b94d2a7)
-+++ b/src/main/java/com/github/shynixn/blockball/BlockBallDependencyInjectionModule.kt	(date 1787479861460)
-@@ -21,7 +21,6 @@
- import com.github.shynixn.mcutils.common.ConfigurationService
- import com.github.shynixn.mcutils.common.ConfigurationServiceImpl
- import com.github.shynixn.mcutils.common.CoroutineHandler
--import com.github.shynixn.mcutils.common.Version
- import com.github.shynixn.mcutils.common.chat.ChatMessageService
- import com.github.shynixn.mcutils.common.command.CommandService
- import com.github.shynixn.mcutils.common.command.CommandServiceImpl
-@@ -92,9 +91,7 @@
-                     "ball",
-                     plugin.dataFolder.toPath().resolve("ball"),
-                     listOf(
--                        "ball/soccer_ball.yml" to "soccer_ball.yml",
--                        "ball/curve_soccer_ball.yml" to "curve_soccer_ball.yml",
--                        "ball/hand_ball.yml" to "hand_ball.yml"
-+                        "ball/basketball.yml" to "basketball.yml"
-                     ),
-                     listOf(),
-                     object : TypeReference<SoccerBallMeta>() {}
